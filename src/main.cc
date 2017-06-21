@@ -1,5 +1,6 @@
 #include <node.h>
 #include <node_object_wrap.h>
+#include <string.h>
 
 #include <tensorflow/c/c_api.h>
 #include <tensorflow/core/platform/logging.h>
@@ -15,17 +16,16 @@ using v8::Value;
 
 using tensorflow::internal::LogString;
 
-void Tensor(const FunctionCallbackInfo<Value>& args) {
+void Version(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
-  TF_Tensor tensor();
-  args.GetReturnValue().Set(String::NewFromUtf8(isolate, "world"));
+  const char *version = TF_Version();
+  args.GetReturnValue().Set(String::NewFromUtf8(isolate, version));
 }
 
 void init(Local<Object> exports) {
-  Object obj();
-  NODE_SET_METHOD(exports, "Tensor", Tensor);
+  NODE_SET_METHOD(exports, "version", Version);
 }
 
-NODE_MODULE(tensorflow, init)
+NODE_MODULE(_tensorflow, init)
 
 }

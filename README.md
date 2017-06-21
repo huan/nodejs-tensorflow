@@ -2,9 +2,25 @@
 
 ## Build
 
+### Build Tensorflow
+
+Dependencies:
+* `bazel >=v0.5.1`
+
+Steps:
 * `git submodule --init update`
-* `npm install -g node-gyp`
-* `node-gyp configure build`
+* `cd third-party/tensorflow`
+* `./configure`
+* `bazel build //tensorflow:libtensorflow.so`
+
+### Build addon
+
+Dependencies:
+* `node >=v6.11.0`
+
+Steps:
+* `npm i`
+* `npm run build`
 
 ## RTFM
 
