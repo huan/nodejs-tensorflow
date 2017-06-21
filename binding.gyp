@@ -11,8 +11,8 @@
       ],
 
       'libraries': [
-#TODO:
-        '~/workspace/opensource/nodejs-tensorflow/third-party/tensorflow/bazel-bin/tensorflow/libtensorflow.so'
+#'-L./third-party/tensorflow/bazel-bin/tensorflow/libtensorflow.so'
+        '-L./lib/libtensorflow.so'
       ]
     }
   ]
