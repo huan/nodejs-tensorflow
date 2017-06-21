@@ -1,0 +1,32 @@
+{
+  "name": "nodejs-tensorflow",
+  "version": "0.0.1",
+  "description": "Node.js Tensorflow binding",
+  "main": "index.js",
+  "scripts": {
+    "build": "node-gyp configure build && webpack --config tools/webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node-gyp rebuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JIoJIaJIu/nodejs-tensorflow.git"
+  },
+  "keywords": [
+    "tensorflow"
+  ],
+  "author": "Guro Bokum jiojiajiu@gmail.com",
+  "license": "ISC",
+  "gypfile": true,
+  "bugs": {
+    "url": "https://github.com/JIoJIaJIu/nodejs-tensorflow/issues"
+  },
+  "homepage": "https://github.com/JIoJIaJIu/nodejs-tensorflow#readme",
+  "dependencies": {
+    "protobufjs": "^6.8.0"
+  },
+  "devDependencies": {
+    "babel-loader": "^7.1.0",
+    "webpack": "^1.12.9"
+  }
+}
