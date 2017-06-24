@@ -12,7 +12,7 @@ addons:
 
 before_script:
   - npm i
-  - git submodule --init i
+  - git submodule --init update
 
 script: npm run build
 
