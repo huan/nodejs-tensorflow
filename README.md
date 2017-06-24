@@ -1,5 +1,7 @@
 # NodeJS Tensorflow binding
 
+[![Build Status](https://travis-ci.org/JIoJIaJIu/nodejs-tensorflow.svg?branch=master)](https://travis-ci.org/JIoJIaJIu/nodejs-tensorflow)
+
 ## Build
 
 ### Build Tensorflow
