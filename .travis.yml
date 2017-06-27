@@ -5,10 +5,18 @@ sudo: required
 dist: trusty
 addons:
   apt:
+    sources:
+      - sourceline: 'deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8'
+        key_url: 'https://bazel.build/bazel-release.pub.gpg'
     packages:
       - python-pip
-      - gcc
       - git
+
+      - pkg-config
+      - zip
+      - g++
+      - zlib1g-dev
+      - unzip
 
 before_script:
   - npm i
