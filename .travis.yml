@@ -1,35 +1,38 @@
 language: node_js
 node_js:
-  - 6
+- 6
 sudo: required
 dist: trusty
 addons:
   apt:
     sources:
-      - sourceline: 'deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8'
-        key_url: 'https://bazel.build/bazel-release.pub.gpg'
+    - sourceline: deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable
+        jdk1.8
+      key_url: https://bazel.build/bazel-release.pub.gpg
     packages:
-      - python-pip
-      - git
-
-      - pkg-config
-      - zip
-      - g++
-      - zlib1g-dev
-      - unzip
-      - bazel
-
+    - python-pip
+    - git
+    - pkg-config
+    - zip
+    - g++
+    - zlib1g-dev
+    - unzip
+    - bazel
 before_install:
-  - git submodule update --init
-
+- git submodule update --init
 install:
-  - bash tools/configure.sh
-  - cd third-party/tensorflow && bazel build --verbose_failures --config=opt //tensorflow:libtensorflow.so && cd ../..
-  - npm i
-
-script: npm run build
-
+- npm i
+script: npm run build && bash tools/utils.sh package
 cache:
   directories:
-    - node_modules
-    - third-party
+  - node_modules
+  - third-party
+deploy:
+  provider: releases
+  api_key:
+    secure: ddzllJJ2OBow11NEiWznusZ5friMHRq0fQsIWqYYYQUIH9cRtEDrdV1Q/2RWotpTcrbK/HKzRTmxohWxB6nZSn+vJ9UQ7ZlDTaqboUIZE5lfN42PIDoLZKDF2sZ6mA8TtBxkNk0nGCT1sAG4wAEsglZ56Cvq777QnZRB2z7IuRCteLZA2uRFm/6wgllQDKTNxP9gAdnM+wJ7SBmStJ3fqvvCpsnM7Xuv/LFBqmqor8TnKALq3j0XmRrSpRxyM/nhf/9s8TbtMSr+l3S5Iqe/hW2Kwb3Kc9wuaOHJKBFFke1//I8WskOCuWinigmtyaKPUmpTcOM5BwUsNmnxm6zHOdJKtwchnqXEaVUN22ErQY9k4iBssE7OhdceqLIy3f16aeeNCI60KFh9VC04jzSof3PI42oIsGR1I9F94AbHwPc/0pJkkA20DATvamwuDnt2UB+Xz4LqyrqzOWA4X3AWlsRANyAuktLfYQfy+aElqwqhbu01UyQHO9v6v2vvXTyIbDiJ+ms00yfOs2nxBJR62gYxgLbdxW23zpOSYRXzb88LHpQ8Xsky3REHzIcd2LMca/e1+qRXSh/sMeaW0wlbZvCZLLFFA70ls9mS0TnjsAMpsodVJiHsdXZak4WP4FcgnGmpL3RwamkOK/+OnuQ+2ufo10V5m8psMVOLgkN4/J4=
+  file: nodejs-tensorflow.zip
+  skip_cleanup: true
+  on:
+    repo: nodejs-tensorflow/nodejs-tensorflow
+    tags: true
