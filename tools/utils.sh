@@ -34,21 +34,7 @@ build_tensorflow() {
 }
 
 package() {
-  mkdir -p archive
-  mkdir -p archive/Release
-
-  cp -rv lib archive/
-  cp -v build/index.js archive/
-  cp -vr build/Release/_tensorflow.node archive/Release/_tensorflow.node
-  cp -vr src archive/
-  cp -vr package.json archive/
-
-  cd archive
-  zip -9r nodejs-tensorflow.zip **
-  cd ../
-  mv archive/nodejs-tensorflow.zip .
-
-  rm -rf archive
+  npm pack
 }
 
 for i in $@; do

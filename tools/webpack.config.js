@@ -6,7 +6,7 @@ module.exports = {
   entry: ['./index'],
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, '../build'),
+    path: path.resolve(__dirname, '../'),
     libraryTarget: 'commonjs'
   },
   module: {
@@ -14,11 +14,14 @@ module.exports = {
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel-loader'
+    }, {
+      test: /\.proto$/,
+      loader: 'proto-loader'
     }]
   },
   target: 'node',
   externals: [
-    /_tensorflow\.node$/,
+    /tensorflow\.node$/,
     function (context, request, cb) {
       var isExternal = /^[a-z]/.test(request);
       cb(null, isExternal);

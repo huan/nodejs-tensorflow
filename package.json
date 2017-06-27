@@ -5,13 +5,27 @@
   "main": "index.js",
   "scripts": {
     "build": "node-gyp configure build && webpack --config tools/webpack.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "node-gyp rebuild"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "babel": {
+    "plugins": [
+      "transform-async-to-generator"
+    ],
+    "presets": [
+      "latest"
+    ]
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JIoJIaJIu/nodejs-tensorflow.git"
+    "url": "git+https://github.com/nodejs-tensorflow/nodejs-tensorflow.git"
   },
+  "files": [
+    "package.json",
+    "lib",
+    "src",
+    "index.js",
+    "build/Release/tensorflow.node"
+  ],
   "keywords": [
     "tensorflow"
   ],
@@ -19,16 +33,20 @@
   "license": "ISC",
   "gypfile": true,
   "bugs": {
-    "url": "https://github.com/JIoJIaJIu/nodejs-tensorflow/issues"
+    "url": "https://github.com/nodejs-tensorflow/nodejs-tensorflow/issues"
   },
-  "homepage": "https://github.com/JIoJIaJIu/nodejs-tensorflow#readme",
+  "homepage": "https://github.com/nodejs-tensorflow/nodejs-tensorflow#readme",
   "dependencies": {
     "protobufjs": "^6.8.0"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-preset-latest": "^6.24.1",
     "gulp": "^3.9.1",
+    "proto-loader": "^0.2.0",
+    "protobufjs": "^6.8.0",
     "webpack": "^1.12.9"
   }
 }

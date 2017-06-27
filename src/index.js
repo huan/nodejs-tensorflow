@@ -1,3 +1,3 @@
-import tensorflow from './Release/_tensorflow.node'; // TODO
+import tensorflow from './build/Release/tensorflow.node';
 
 console.log(tensorflow.version());

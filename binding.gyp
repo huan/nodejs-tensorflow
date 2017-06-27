@@ -1,7 +1,7 @@
 {
   'targets': [
     {
-      'target_name': '_tensorflow',
+      'target_name': 'tensorflow',
       'sources': [
         'src/main.cc'
       ],
