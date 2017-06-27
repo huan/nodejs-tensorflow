@@ -17,13 +17,19 @@ addons:
       - g++
       - zlib1g-dev
       - unzip
+      - bazel
 
-before_script:
-  - npm i
+before_install:
   - git submodule update --init
+
+install:
+  - bash tools/configure.sh
+  - cd third-party/tensorflow && bazel build --verbose_failures --config=opt //tensorflow:libtensorflow.so && cd ../..
+  - npm i
 
 script: npm run build
 
 cache:
   directories:
     - node_modules
+    - third-party
