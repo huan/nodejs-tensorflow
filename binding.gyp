@@ -10,9 +10,12 @@
         'third-party/tensorflow'
       ],
 
-      'libraries': [
-#'-L./third-party/tensorflow/bazel-bin/tensorflow/libtensorflow.so'
-        '-L./lib/libtensorflow.so'
+      'conditions': [
+        ['OS=="linux"', {
+          'libraries': [
+            '<(module_root_dir)/lib/libtensorflow.so'
+          ]
+        }]
       ]
     }
   ]

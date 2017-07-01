@@ -26,6 +26,6 @@ void init(Local<Object> exports) {
   NODE_SET_METHOD(exports, "version", Version);
 }
 
-NODE_MODULE(_tensorflow, init)
+NODE_MODULE(tensorflow, init)
 
 }

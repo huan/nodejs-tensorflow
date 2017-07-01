@@ -1,0 +1,53 @@
+var fs = require('fs');
+var path = require('path');
+var os = require('os');
+var format = require('util').format;
+
+var request = require('request');
+var progress = require('request-progress');
+var log = require('single-line-log').stdout;
+
+var LINUX_X64_LIB = 'https://github.com/nodejs-tensorflow/nodejs-tensorflow/raw/master/lib/libtensorflow.so';
+
+module.exports = function (grunt) {
+  grunt.initConfig({});
+
+  grunt.registerTask("default", ["download_libtensorflow"]);
+
+  grunt.registerTask("download_libtensorflow", function () {
+    var arch = os.arch();
+    var platform = os.platform();
+
+    console.log(format("Downloading libtensorflow (%s: %s)", platform, arch));
+    createLibDir();
+
+    if (platform === 'linux') {
+      if (arch === 'x64') {
+        var libname = 'libtensorflow.so';
+        var libPath = path.resolve(__dirname, '../lib', libname);
+
+        if (!fs.existsSync(libPath)) {
+          done = this.async();
+          progress(request(LINUX_X64_LIB))
+            .on('progress', function (state) {
+              log(format("%d%", Math.round(state.percent * 10000) / 100));
+            })
+            .on('end', done)
+            .pipe(fs.createWriteStream(libPath));
+        } else {
+          console.info("The library already exists");
+        }
+        return;
+      }
+    }
+
+    throw new Error(format("Unsupported system configuration (%s: %s)", platform, arch));
+  });
+}
+
+function createLibDir() {
+  var dirPath = path.resolve(__dirname, '../lib');
+  if (!fs.existsSync(dirPath)) {
+    fs.mkdirSync(dirPath);
+  }
+}

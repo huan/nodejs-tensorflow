@@ -3,14 +3,18 @@
   "version": "0.0.1",
   "description": "Node.js Tensorflow binding",
   "main": "index.js",
+  "engines": {
+    "node": ">=6.11.0"
+  },
   "scripts": {
-    "build": "node-gyp configure build && webpack --config tools/webpack.config.js",
+    "install": "npm run download_libs && npm run gyp && npm run build",
+
+    "download_libs": "grunt --gruntfile tools/Gruntfile download_libtensorflow",
+    "gyp": "node-gyp configure build",
+    "build": "webpack --config tools/webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "babel": {
-    "plugins": [
-      "transform-async-to-generator"
-    ],
     "presets": [
       "latest"
     ]
@@ -21,17 +25,16 @@
   },
   "files": [
     "package.json",
-    "lib",
+    "binding.gyp",
     "src",
-    "index.js",
-    "build/Release/tensorflow.node"
+    "tools",
+    "third-party/tensorflow/tensorflow/**/*.h"
   ],
   "keywords": [
     "tensorflow"
   ],
   "author": "Guro Bokum jiojiajiu@gmail.com",
-  "license": "ISC",
-  "gypfile": true,
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/nodejs-tensorflow/nodejs-tensorflow/issues"
   },
@@ -41,12 +44,15 @@
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
-    "babel-loader": "^7.1.0",
+    "babel-loader": "^6.4.1",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-preset-latest": "^6.24.1",
-    "gulp": "^3.9.1",
+    "grunt": "^1.0.1",
     "proto-loader": "^0.2.0",
     "protobufjs": "^6.8.0",
+    "request": "^2.81.0",
+    "request-progress": "^3.0.0",
+    "single-line-log": "^1.1.2",
     "webpack": "^1.12.9"
   }
 }
