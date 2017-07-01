@@ -19,10 +19,13 @@ addons:
     - unzip
     - bazel
 before_install:
-- git submodule update --init
+  - git submodule update --init
 install:
-- npm i
-script: npm run build && bash tools/utils.sh package
+  - npm i
+  - npm run download_libs
+  - npm run gyp
+#TODO
+script: npm run build && npm pack
 cache:
   directories:
   - node_modules
