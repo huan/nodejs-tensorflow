@@ -1,8 +1,3 @@
-function DType() {
-}
+import Types from '../../third-party/tensorflow/tensorflow/core/framework/types.proto';
 
-DType.prototype = {
-  toString() {
-    return "tf.dtype"
-  }
-}
+export default Types

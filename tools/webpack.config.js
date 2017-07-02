@@ -16,7 +16,7 @@ module.exports = {
       loader: 'babel-loader'
     }, {
       test: /\.proto$/,
-      loader: 'proto-loader'
+      loader: 'pbf-loader'
     }]
   },
   target: 'node',
