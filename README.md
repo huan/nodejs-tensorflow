@@ -6,8 +6,9 @@
 ## Installation
 
 ```sh
-npm install --save-dev nodejs-tensorflow
+npm install --save-dev https://github.com/nodejs-tensorflow/nodejs-tensorflow/releases/download/v0.0.1/nodejs-tensorflow-0.0.1.tgz
 ```
+Supports only `linux_x64`
 
 ## Usage
 
