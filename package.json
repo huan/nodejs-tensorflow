@@ -30,6 +30,7 @@
     "binding.gyp",
     "index.js",
     "tools",
+    "src/**/*.cc",
     "third-party/tensorflow/tensorflow/**/*.h"
   ],
   "keywords": [
@@ -42,7 +43,12 @@
   },
   "homepage": "https://github.com/nodejs-tensorflow/nodejs-tensorflow#readme",
   "dependencies": {
-    "protobufjs": "^6.8.0"
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "node-gyp": "^3.6.2",
+    "request": "^2.81.0",
+    "request-progress": "^3.0.0",
+    "single-line-log": "^1.1.2"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -50,13 +56,8 @@
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-preset-latest": "^6.24.1",
-    "grunt": "^1.0.1",
-    "grunt-cli": "^1.2.0",
     "pbf-loader": "^1.1.0",
     "protobufjs": "^6.8.0",
-    "request": "^2.81.0",
-    "request-progress": "^3.0.0",
-    "single-line-log": "^1.1.2",
     "webpack": "^1.12.9"
   }
 }

@@ -21,10 +21,8 @@ addons:
 
 install:
   - npm i
-  - npm run download_libs
-  - npm run gyp
-#TODO
-script: npm run build
+
+script: npm test
 
 before_deploy: npm pack --verbose
 deploy:
