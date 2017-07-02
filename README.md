@@ -9,14 +9,24 @@
 npm install --save-dev nodejs-tensorflow
 ```
 
-### Building
+## Usage
 
-* `npm run download_libs` - download compiled tensorflow binaries
-* `npm run gyp` - build C++ addon
-* `npm run build` - assemble javascript from babel srcs
+```javascript
+var tf = require('nodejs-tensorflow');
+console.log(tf.version())
+```
 
+## Contributing
 
-## RTFM
+TODO
+
+### RTFM
+
+#### Docs
+* [How to build Tensorflow](./docs/01-building_tensorflow.md)
+* [How to build addon](./docs/02-building_addon.md)
+
+#### Resources
 
 * [N-API](https://nodejs.org/api/n-api.html)
 * [Node addons](https://nodejs.org/api/addons.html)
