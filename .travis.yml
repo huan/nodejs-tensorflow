@@ -18,24 +18,21 @@ addons:
     - zlib1g-dev
     - unzip
     - bazel
-before_install:
-  - git submodule update --init
+
 install:
   - npm i
   - npm run download_libs
   - npm run gyp
 #TODO
-script: npm run build && npm pack
-cache:
-  directories:
-  - node_modules
-  - third-party
+script: npm run build
+
+before_deploy: npm pack --verbose
 deploy:
   provider: releases
   api_key:
     secure: ddzllJJ2OBow11NEiWznusZ5friMHRq0fQsIWqYYYQUIH9cRtEDrdV1Q/2RWotpTcrbK/HKzRTmxohWxB6nZSn+vJ9UQ7ZlDTaqboUIZE5lfN42PIDoLZKDF2sZ6mA8TtBxkNk0nGCT1sAG4wAEsglZ56Cvq777QnZRB2z7IuRCteLZA2uRFm/6wgllQDKTNxP9gAdnM+wJ7SBmStJ3fqvvCpsnM7Xuv/LFBqmqor8TnKALq3j0XmRrSpRxyM/nhf/9s8TbtMSr+l3S5Iqe/hW2Kwb3Kc9wuaOHJKBFFke1//I8WskOCuWinigmtyaKPUmpTcOM5BwUsNmnxm6zHOdJKtwchnqXEaVUN22ErQY9k4iBssE7OhdceqLIy3f16aeeNCI60KFh9VC04jzSof3PI42oIsGR1I9F94AbHwPc/0pJkkA20DATvamwuDnt2UB+Xz4LqyrqzOWA4X3AWlsRANyAuktLfYQfy+aElqwqhbu01UyQHO9v6v2vvXTyIbDiJ+ms00yfOs2nxBJR62gYxgLbdxW23zpOSYRXzb88LHpQ8Xsky3REHzIcd2LMca/e1+qRXSh/sMeaW0wlbZvCZLLFFA70ls9mS0TnjsAMpsodVJiHsdXZak4WP4FcgnGmpL3RwamkOK/+OnuQ+2ufo10V5m8psMVOLgkN4/J4=
   file_glob: true
-  file: nodejs-tensorflow-*.zip
+  file: nodejs-tensorflow-*.tgz
   skip_cleanup: true
   on:
     repo: nodejs-tensorflow/nodejs-tensorflow
