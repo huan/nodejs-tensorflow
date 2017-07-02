@@ -1,32 +1,20 @@
-# NodeJS Tensorflow binding
+# NodeJS Tensorflow
 
 [![Build Status](https://travis-ci.org/nodejs-tensorflow/nodejs-tensorflow.svg?branch=master)](https://travis-ci.org/nodejs-tensorflow/nodejs-tensorflow)
 [![License](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-## Build
+## Installation
 
-### Build addon
+```sh
+npm install --save-dev nodejs-tensorflow
+```
 
-Dependencies:
-* `node >=v6.11.0`
+### Building
 
-Steps:
-* `npm i`
 * `npm run download_libs` - download compiled tensorflow binaries
 * `npm run gyp` - build C++ addon
 * `npm run build` - assemble javascript from babel srcs
 
-
-### Build Tensorflow
-
-Dependencies:
-* `bazel >=v0.5.1`
-
-Steps:
-* `git submodule --init update`
-* `cd third-party/tensorflow`
-* `./configure`
-* `bazel build //tensorflow:libtensorflow.so`
 
 ## RTFM
 
