@@ -7,7 +7,7 @@
     "node": ">=6.11.0"
   },
   "scripts": {
-    "install": "npm run download_libs && npm run gyp && npm run build",
+    "install": "npm run download_libs && npm run gyp",
     "download_libs": "grunt --gruntfile tools/Gruntfile download_libtensorflow",
     "gyp": "node-gyp configure build",
     "build": "webpack --config tools/webpack.config.js",
@@ -28,7 +28,7 @@
   "files": [
     "package.json",
     "binding.gyp",
-    "src",
+    "index.js",
     "tools",
     "third-party/tensorflow/tensorflow/**/*.h"
   ],
