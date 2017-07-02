@@ -21,6 +21,7 @@ addons:
 
 install:
   - npm i
+  - npm run build
 
 script: npm test
 
