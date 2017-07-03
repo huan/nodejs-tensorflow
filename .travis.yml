@@ -20,7 +20,7 @@ addons:
     - bazel
 
 before_install:
-  - bash utils/tools.sh configure_tensorflow
+  - bash tools/utils.sh configure_tensorflow
   - cd third-party/tensorflow && bazel --output_base=./deps build //tensorflow/core:proto_text
   - cd third-party/tensorflow && bazel --output_base=./deps build @eigen_archive//:eigen
 
