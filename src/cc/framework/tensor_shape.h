@@ -1,6 +1,7 @@
 #ifndef NODEJS_TF_TENSOR_SHAPE_H
 #define NODEJS_TF_TENSOR_SHAPE_H
 
+#include <nan.h>
 #include <node.h>
 #include <node_object_wrap.h>
 
@@ -8,14 +9,13 @@
 
 namespace nodejs_tf {
 
-class TensorShape: public node::ObjectWrap {
+class TensorShape: public Nan::ObjectWrap {
   public:
-    static void New(const FunctionCallbackInfo<Value>& args);
+    static NAN_METHOD(New);
+
   private:
     TensorShape();
     ~TensorShape();
-
-    tensorflow::TensorShape* self;
 };
 
 }

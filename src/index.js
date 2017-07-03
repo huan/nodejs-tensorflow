@@ -7,6 +7,7 @@ const Tensorflow = {
   },
 
   Tensor: tf_.Tensor,
+  TensorShape: tf_.TensorShape
 
   //dtypes: dtypes
 }

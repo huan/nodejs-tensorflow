@@ -21,8 +21,9 @@ addons:
 
 before_install:
   - bash tools/utils.sh configure_tensorflow
-  - cd third-party/tensorflow && bazel --output_base=./deps build //tensorflow/core:proto_text
-  - cd third-party/tensorflow && bazel --output_base=./deps build @eigen_archive//:eigen
+  - cd third-party/tensorflow
+  - bazel --output_base=./deps build //tensorflow/core:proto_text
+  - bazel --output_base=./deps build @eigen_archive//:eigen
 
 install:
   - npm i
