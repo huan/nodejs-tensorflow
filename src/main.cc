@@ -28,7 +28,7 @@ void Version(const FunctionCallbackInfo<Value>& args) {
 void init(Local<Object> exports) {
   NODE_SET_METHOD(exports, "version", Version);
   NODE_SET_METHOD(exports, "Tensor", Tensor::New);
-  Nan::SetMethod(exports, "TensorShape", TensorShape::New);
+  TensorShape::Init(exports);
 }
 
 NODE_MODULE(tensorflow, init)
