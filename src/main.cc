@@ -5,16 +5,17 @@
 #include <tensorflow/c/c_api.h>
 #include <tensorflow/core/platform/logging.h>
 
-namespace demo {
+#include "cc/framework/tensor.h"
+
+namespace nodejs_tf {
 
 using v8::FunctionCallbackInfo;
+using v8::FunctionTemplate;
 using v8::Isolate;
 using v8::Local;
 using v8::Object;
 using v8::String;
 using v8::Value;
-
-using tensorflow::internal::LogString;
 
 void Version(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
@@ -24,6 +25,7 @@ void Version(const FunctionCallbackInfo<Value>& args) {
 
 void init(Local<Object> exports) {
   NODE_SET_METHOD(exports, "version", Version);
+  NODE_SET_METHOD(exports, "Tensor", Tensor::New);
 }
 
 NODE_MODULE(tensorflow, init)

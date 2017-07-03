@@ -1,6 +1,6 @@
 {
   "name": "nodejs-tensorflow",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Node.js Tensorflow binding",
   "main": "index.js",
   "engines": {
@@ -31,7 +31,9 @@
     "index.js",
     "tools",
     "src/**/*.cc",
-    "third-party/tensorflow/tensorflow/**/*.h"
+    "third-party/tensorflow/tensorflow/**/*.h",
+    "third-party/tensorflow/deps/external/eigen_archive/unsupported/**/*.h",
+    "third-party/tensorflow/deps/execroot/tensorflow/bazel-out/local-opt/genfiles/**/*.h"
   ],
   "keywords": [
     "tensorflow"
@@ -58,6 +60,7 @@
     "babel-preset-latest": "^6.24.1",
     "chai": "^4.0.2",
     "mocha": "^3.4.2",
+    "nan": "^2.6.2",
     "pbf-loader": "^1.1.0",
     "protobufjs": "^6.8.0",
     "webpack": "^1.12.9"
