@@ -10,10 +10,10 @@
 
       'include_dirs': [
         '<!(node -e "require(\'nan\')")',
-        'third-party/tensorflow',
-        'third-party/tensorflow/deps/external/eigen_archive',
-        'third-party/tensorflow/deps/external/protobuf/src',
-        'third-party/tensorflow/deps/execroot/tensorflow/bazel-out/local-opt/genfiles'
+        '<(module_root_dir)/third-party/tensorflow',
+        '<(module_root_dir)/third-party/tensorflow/deps/external/eigen_archive',
+        '<(module_root_dir)/third-party/tensorflow/deps/external/protobuf/src',
+        '<(module_root_dir)/third-party/tensorflow/deps/execroot/tensorflow/bazel-out/local-opt/genfiles'
       ],
 
       'conditions': [
