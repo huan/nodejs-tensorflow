@@ -1,8 +1,9 @@
 language: node_js
 node_js:
 - 6
-sudo: required
 dist: trusty
+sudo: required
+group: deprecated-2017Q2
 addons:
   apt:
     sources:
@@ -11,7 +12,6 @@ addons:
       key_url: https://bazel.build/bazel-release.pub.gpg
     packages:
     - python-pip
-    - git
     - pkg-config
     - zip
     - g++
@@ -20,9 +20,9 @@ addons:
     - bazel
 
 before_install:
-  - bash tools/utils.sh configure_tensorflow
   - cd third-party/tensorflow
-  - bazel --output_base=./deps build //tensorflow/core:proto_text
+  - bazel --output_base=./deps build @eigen_archive//:eigen
+  - bazel --output_base=./deps build //tensorflow/core:protos_all_cc
 
 install:
   - npm i
