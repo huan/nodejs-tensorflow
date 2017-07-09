@@ -1,5 +1,5 @@
 import tf_ from './build/Release/tensorflow.node'
-import {DataType as dtypes} from './dtypes';
+import DataType from './dtypes';
 
 class Tensor {
   /**
@@ -12,7 +12,7 @@ class Tensor {
 
   constructor(data, dtype, dims, numDims, length) {
     if (!dtype)
-      dtype = dtypes.DT_INVALID;
+      dtype = new DataType();
 
     if (!dims) {
       if (data) {
@@ -35,12 +35,25 @@ class Tensor {
       }
     }
 
-    this._self = new tf_.Tensor(dtype.value, dims, numDims, length);
+    this._self = new tf_.Tensor(dtype.getValue(), dims, numDims, length);
   }
 
   toString() {
   }
 }
 
+/**
+ * Create constant tensor
+ * @param {Array|ArrayBuffer} data
+ * @param {DataType} dtype
+ */
+class Constant extends Tensor {
+  constructor(data, dtype) {
 
+    super(data, dtype);
+  }
+}
+
+
+export {Constant}
 export default Tensor
