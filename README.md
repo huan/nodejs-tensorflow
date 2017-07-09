@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/nodejs-tensorflow/nodejs-tensorflow.svg?branch=master)](https://travis-ci.org/nodejs-tensorflow/nodejs-tensorflow)
 [![License](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Current version is based on [c_api](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/c/c_api.h)
+Current version is based on [c_api](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/c/c_api.h)  
 Next (`>=0.10.0`) should be integrated with all Tensorflow stack
 
 ## Installation

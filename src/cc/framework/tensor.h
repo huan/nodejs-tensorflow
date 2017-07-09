@@ -1,26 +1,29 @@
 #ifndef NODEJS_TF_TENSOR_H
 #define NODEJS_TF_TENSOR_H
 
-#include <node.h>
-#include <node_object_wrap.h>
+#include <nan.h>
 
-#include <tensorflow/core/framework/tensor.h>
+#include <tensorflow/c/c_api.h>
+
+#include "tensor_shape.h"
 
 namespace nodejs_tf {
 
 using v8::FunctionCallbackInfo;
 using v8::Value;
 
-class Tensor: public node::ObjectWrap {
+class Tensor: public Nan::ObjectWrap {
   public:
-    static void New(const FunctionCallbackInfo<Value>& args);
+    static NAN_MODULE_INIT(Init);
+    static NAN_METHOD(New);
+    static NAN_METHOD(shape);
   private:
-    tensorflow::Tensor* getTensor();
-    Tensor();
+    Tensor(TF_DataType dtype, int64_t dims, int num_dims, size_t len);
+    Tensor(TF_DataType dtype, int64_t dims, int num_dims, size_t len, void* data);
     ~Tensor();
     static void ToString(const FunctionCallbackInfo<Value>& args);
 
-    tensorflow::Tensor* self;
+    TF_Tensor* self;
 };
 
 }
