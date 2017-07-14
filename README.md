@@ -20,33 +20,23 @@ var tf = require('nodejs-tensorflow');
 console.log(tf.version())
 ```
 
-## Libraries
-
-* [long.js](https://github.com/dcodeIO/long.js)
-* [protobuf.js](https://github.com/dcodeIO/protobuf.js)
-* [bytebuffer](https://github.com/dcodeIO/bytebuffer.js)
-
 ## Contributing
 
-TODO
+Welcome to the project
+
+Steps:
+* Find the issue with `contributers-welcome` or create your own
+* Mark as you are working on it
+* Code, fun and create PR
+
+### Slack
+
+Connect to the [slack](https://tensor-flow-talk-invite.herokuapp.com/) and join to [#nodejs](https://tensorflowtalk.slack.com/messages/C0E9KBG95/) channel  
+You can find me there as `jiojiajiu`
 
 ### RTFM
 
-#### Docs
 * [How to build Tensorflow](./docs/01-building_tensorflow.md)
 * [How to build addon](./docs/02-building_addon.md)
+* [Useful resources](./docs/03-resources.md)
 
-#### Resources
-
-* [N-API](https://nodejs.org/api/n-api.html)
-* [Node addons](https://nodejs.org/api/addons.html)
-* [V8 doc](https://v8docs.nodesource.com/)
-* [V8 Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide)
-
-Useful links:
-* [node-gyp projects](https://github.com/nodejs/node-gyp/wiki/%22binding.gyp%22-files-out-in-the-wild)
-
-Links:
-* [Related project](https://github.com/node-tensorflow/node-tensorflow)
-* [Discussion topic](https://github.com/tensorflow/tensorflow/issues/37)
-* [SWIG](https://github.com/node-tensorflow/node-tensorflow/pull/13)
