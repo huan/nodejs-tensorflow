@@ -1,7 +1,9 @@
-import tf_ from './build/Release/tensorflow.node'
+import * as tf_ from './build/Release/tensorflow.node'
 import DataType from './dtypes';
 
 class Tensor {
+  _self: Object;
+
   /**
    * @param {ArrayBuffer} data
    * @param {DataType} dtype
@@ -10,7 +12,7 @@ class Tensor {
    * @param {Number} length
    */
 
-  constructor(data, dtype, dims, numDims, length) {
+  constructor(data: any, dtype: any, dims?: any, numDims?: number, length?: number) {
     if (!dtype)
       dtype = new DataType();
 
@@ -48,7 +50,7 @@ class Tensor {
  * @param {DataType} dtype
  */
 class Constant extends Tensor {
-  constructor(data, dtype) {
+  constructor(data: any, dtype: any) {
 
     super(data, dtype);
   }

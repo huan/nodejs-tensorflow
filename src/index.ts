@@ -1,9 +1,9 @@
-import tf_ from './build/Release/tensorflow.node';
+import * as tf_ from './build/Release/tensorflow.node';
 
 import Tensor, {Constant} from './framework/tensor';
 import DataType, * as dtypes from './framework/dtypes';
 
-const Tensorflow = {
+const Tensorflow: Object = {
   version() {
     return tf_.version()
   },
@@ -12,10 +12,6 @@ const Tensorflow = {
   TensorShape: tf_.TensorShape,
   Constant: Constant,
   DataType: DataType,
-}
-
-for (let i in dtypes) {
-  Tensorflow[i] = dtypes[i];
 }
 
 export default Tensorflow
