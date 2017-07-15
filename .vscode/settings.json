@@ -1,0 +1,10 @@
+{
+    "typescript.tsdk": "./node_modules/typescript/lib"
+  , "typescript.check.tscVersion": false
+  , "files.exclude": {
+      "build/": true
+    , "lib/": true
+    , "node_modules/": true
+    , "third-party/": true
+  }
+}
