@@ -1,8 +1,10 @@
 import {DataType as proto} from '../../third-party/tensorflow/tensorflow/core/framework/types.proto';
-console.log(proto);
 
 class DataType {
-  constructor(alias) {
+  _alias: String | undefined;
+  _value: Object;
+
+  constructor(alias?: String) {
     switch (alias && alias.toLowerCase()) {
       case 'float':
         this._value = proto.DT_FLOAT.value;

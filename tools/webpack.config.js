@@ -11,13 +11,18 @@ module.exports = {
   },
   module: {
     loaders: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader'
-    }, {
       test: /\.proto$/,
       loader: 'pbf-loader'
+    }, {
+      test: /\.ts$/,
+      loader: 'awesome-typescript-loader',
+      options: {
+        transpileOnly: true
+      }
     }]
+  },
+  resolve: {
+    extensions: ['', '.ts', '.js']
   },
   target: 'node',
   externals: [

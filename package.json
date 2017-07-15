@@ -13,14 +13,6 @@
     "build": "webpack --config tools/webpack.config.js",
     "test": "mocha"
   },
-  "babel": {
-    "presets": [
-      "latest"
-    ],
-    "plugins": [
-      "add-module-exports"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nodejs-tensorflow/nodejs-tensorflow.git"
@@ -53,16 +45,13 @@
     "single-line-log": "^1.1.2"
   },
   "devDependencies": {
-    "babel-core": "^6.25.0",
-    "babel-loader": "^6.4.1",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-transform-async-to-generator": "^6.24.1",
-    "babel-preset-latest": "^6.24.1",
+    "awesome-typescript-loader": "^3.2.1",
     "chai": "^4.0.2",
     "mocha": "^3.4.2",
     "nan": "^2.6.2",
     "pbf-loader": "^1.1.0",
     "protobufjs": "^6.8.0",
+    "typescript": "^2.4.1",
     "webpack": "^1.12.9"
   }
 }
