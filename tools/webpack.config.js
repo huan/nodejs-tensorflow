@@ -3,7 +3,7 @@ var path = require('path');
 
 module.exports = {
   context: path.resolve(__dirname, '../src'),
-  entry: ['./index'],
+  entry: ['./index.ts'],
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, '../'),

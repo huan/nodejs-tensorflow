@@ -1,6 +1,7 @@
 import * as tf_ from './build/Release/tensorflow.node';
 
-import Tensor, {Constant} from './framework/tensor';
+import Tensor, {Constant, MArray} from './framework/tensor';
+import TensorShape from './framework/tensorShape';
 import DataType, * as dtypes from './framework/dtypes';
 
 const Tensorflow: Object = {
@@ -9,9 +10,10 @@ const Tensorflow: Object = {
   },
 
   Tensor: Tensor,
-  TensorShape: tf_.TensorShape,
+  TensorShape: TensorShape,
   Constant: Constant,
   DataType: DataType,
+  MArray: MArray
 }
 
 export default Tensorflow

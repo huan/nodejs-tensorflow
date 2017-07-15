@@ -37,14 +37,17 @@
   },
   "homepage": "https://github.com/nodejs-tensorflow/nodejs-tensorflow#readme",
   "dependencies": {
+    "bytebuffer": "^5.0.1",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
+    "lodash": "^4.17.4",
     "node-gyp": "^3.6.2",
     "request": "^2.81.0",
     "request-progress": "^3.0.0",
     "single-line-log": "^1.1.2"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.69",
     "awesome-typescript-loader": "^3.2.1",
     "chai": "^4.0.2",
     "mocha": "^3.4.2",

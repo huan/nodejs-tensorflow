@@ -4,7 +4,7 @@ class DataType {
   _alias: String | undefined;
   _value: Object;
 
-  constructor(alias?: String) {
+  constructor(alias?: string) {
     switch (alias && alias.toLowerCase()) {
       case 'float':
         this._value = proto.DT_FLOAT.value;
@@ -39,6 +39,15 @@ class DataType {
 
   getValue() {
     this._value;
+  }
+
+  getArrayBufferView() {
+    switch (this._alias) {
+      case 'int8':
+        return Int8Array
+      default:
+        return Int8Array
+    }
   }
 }
 
