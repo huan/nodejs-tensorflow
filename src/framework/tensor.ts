@@ -10,19 +10,25 @@ import TensorShape from './tensorShape'
 class Tensor {
   private _self: object;
   private _shape: TensorShape;
+  private _dtype: DataType;
 
   /**
-   * @param {ArrayBuffer|MArray} data
+   * @param {ArrayBuffer} data
    * @param {DataType} dtype
    * @param {TensorShape} shape
    */
 
-  constructor(data: ArrayBuffer | MArray, dtype: string | DataType, shape: TensorShape) {
-    if (!(dtype instanceof DataType))
-      dtype = new DataType(dtype);
-
+  constructor(data: ArrayBuffer, dtype: DataType, shape: TensorShape) {
+    this._dtype = dtype;
     this._shape = shape;
-    this._self = new tf_.Tensor(dtype.getValue(), shape.dims, shape.ndims, shape.length);
+    this._self = new tf_.Tensor(dtype.value, shape.dims, shape.ndims, shape.length, data);
+  }
+
+  /**
+   * Returns TensorShape
+   */
+  get shape() : TensorShape {
+    return this._shape;
   }
 }
 
@@ -41,8 +47,12 @@ class Constant extends Tensor {
       // TODO: not implemented
       data = new ArrayBuffer(1);
     } else if (!(data instanceof MArray)) {
-      data = new MArray(data, shape);
+      let marr = new MArray(data, dtype, shape);
+      data = marr.buffer;
+      dtype = marr.dtype;
     }
+
+    dtype = DataType.create(dtype);
     super(data, dtype, shape);
   }
 }
@@ -55,15 +65,33 @@ class MArray {
 
   private _data: any[];
   private _shape: TensorShape;
+  private _dtype: DataType;
+  private _buffer: ArrayBuffer;
 
-  constructor(data: any[], shape: number[] | TensorShape) {
+  constructor(data: any[], dtype: any, shape: number[] | TensorShape) {
     this._data = data;
     this._shape = TensorShape.create(shape);
+    this._dtype = DataType.create(dtype);
 
     let length = _.reduce(this._shape.asList(), (mult, p) => mult * p, 1);
     for (let i = 0; i < length; i++) {
       this[i] = this.getValue(i);
     }
+  }
+
+  get dtype() {
+    return this._dtype;
+  }
+
+  get buffer() {
+    if (this._buffer)
+      return this._buffer;
+
+    let c = this._dtype.getArrayBufferView();
+    let view = new c(this);
+    this._buffer = view.buffer;
+
+    return this._buffer;
   }
 
   private getValue(index: number): any {
@@ -78,6 +106,26 @@ class MArray {
       index = index - (outerIndex * card);
     })
     return  data;
+  }
+
+  [Symbol.iterator] = () => {
+    let self = this;
+    let i = 0;
+    let length = _.reduce(this._shape.asList(), (mult, p) => mult * p, 1);
+
+    return {
+      next() {
+        if (i == length)
+          return {done: true, value: null}
+
+        let value = self.getValue(i);
+        i++;
+        return {
+          done: false,
+          value: value
+        }
+      }
+    }
   }
 }
 

@@ -1,8 +1,15 @@
 import {DataType as proto} from '../../third-party/tensorflow/tensorflow/core/framework/types.proto';
 
 class DataType {
-  _alias: String | undefined;
-  _value: Object;
+  _alias: string | undefined;
+  _value: object;
+
+  static create(dtype: string | DataType) {
+    if (dtype instanceof DataType)
+      return dtype;
+
+    return new DataType(dtype);
+  }
 
   constructor(alias?: string) {
     switch (alias && alias.toLowerCase()) {
@@ -22,6 +29,7 @@ class DataType {
         this._value = proto.DT_INT32.value;
         break;
       case 'int64':
+        console.warn('Current filetype is not supported');
         this._value = proto.DT_INT64.value;
         break;
       case 'uint8':
@@ -37,31 +45,53 @@ class DataType {
     this._alias = alias;
   }
 
-  getValue() {
-    this._value;
+  get value() {
+    return this._value;
+  }
+
+  // TODO: needs implementation?
+  convert(value: any) {
+    return value;
   }
 
   getArrayBufferView() {
     switch (this._alias) {
+      case 'float':
+        return Float32Array;
+      case 'double':
+        return Float64Array;
       case 'int8':
-        return Int8Array
+        return Int8Array;
+      case 'int16':
+        return Int16Array;
+      case 'int32':
+        return Int32Array;
+      case 'int64':
+       //TODO
+        console.warn('Current filetype is not supported');
+        return Int32Array;
+      case 'uint8':
+        return Uint8Array;
+      case 'uint16':
+        return Uint16Array;
       default:
-        return Int8Array
+        //TODO DT_INVALID
+        return Int8Array;
     }
   }
 }
 
-export const FLOAT = new DataType('float');
-export const DOUBLE = new DataType('double');
+export const FLOAT = DataType.create('float');
+export const DOUBLE = DataType.create('double');
 
-export const INT8 = new DataType('int8');
-export const INT16 = new DataType('int16');
-export const INT32 = new DataType('int32');
-export const INT64 = new DataType('int64');
+export const INT8 = DataType.create('int8');
+export const INT16 = DataType.create('int16');
+export const INT32 = DataType.create('int32');
+export const INT64 = DataType.create('int64');
 
-export const UINT8 = new DataType('uint8');
-export const UINT16 = new DataType('uint16');
+export const UINT8 = DataType.create('uint8');
+export const UINT16 = DataType.create('uint16');
 
-export const STRING = new DataType('string');
+export const STRING = DataType.create('string');
 
 export default DataType
