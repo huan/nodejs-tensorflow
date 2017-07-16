@@ -34,6 +34,11 @@ Steps:
 Connect to the [slack](https://tensor-flow-talk-invite.herokuapp.com/) and join to [#nodejs](https://tensorflowtalk.slack.com/messages/C0E9KBG95/) channel  
 You can find me there as `jiojiajiu`
 
+### Test
+
+* `npm test`
+* `npm test -- -w` - run in watch mode
+
 ### RTFM
 
 * [How to build Tensorflow](./docs/01-building_tensorflow.md)

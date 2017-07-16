@@ -1,4 +1,4 @@
-import * as tf_ from './build/Release/tensorflow.node';
+import * as tf_ from 'tensorflow.node';
 
 import Tensor, {Constant, MArray} from './framework/tensor';
 import TensorShape from './framework/tensorShape';

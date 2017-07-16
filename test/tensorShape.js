@@ -1,8 +1,8 @@
-var should = require('chai').should();
+import {expect} from 'chai';
+
+import tf from '../src/index';
 
 describe('Unit testing TensorShape module', function () {
-  var tf = require('../index.js').default; //TODO
-
   describe('Test simple TensorShape [1, 1]', function () {
     var shape;
     var data = [1, 1];
@@ -12,16 +12,16 @@ describe('Unit testing TensorShape module', function () {
     })
 
     it('Create', function () {
-      should.exist(shape);
+      expect(shape).to.exist;
     });
 
     it('Check asList', function () {
-      shape.asList().should.to.be.an('array');
-      shape.asList().should.to.deep.equal(data);
+      expect(shape.asList()).to.be.an('array');
+      expect(shape.asList()).to.deep.equal(data);
     });
 
     it('Check length', function () {
-      shape.length.should.to.equal(2);
+      expect(shape.length).to.equal(2);
     });
   });
 
@@ -34,16 +34,16 @@ describe('Unit testing TensorShape module', function () {
     })
 
     it('Create', function () {
-      should.exist(shape);
+      expect(shape).to.exist;
     });
 
     it('Check asList', function () {
-      shape.asList().should.to.be.an('array');
-      shape.asList().should.to.deep.equal([3, 5, 0, 0, 10]);
+      expect(shape.asList()).to.be.an('array');
+      expect(shape.asList()).to.deep.equal([3, 5, 0, 0, 10]);
     });
 
     it('Check length', function () {
-      shape.length.should.to.equal(5);
+      expect(shape.length).to.equal(5);
     });
   });
 });

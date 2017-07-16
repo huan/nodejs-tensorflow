@@ -1,16 +1,17 @@
-var should = require('chai').should();
+import {should} from 'chai'
 
-var matrixes = require('./matrixes.js');
+import {MArray} from '../../src/framework/tensor'
+
+import {Array2D, Array3D} from './matrixes'
 
 describe('Unit uint8 Tensor', function () {
-  var tf = require('../../index.js').default; //TODO
 
   describe('2D Marray', function () {
-    var arr = matrixes.Array2D;
-    var marray;
+    let marray;
 
     beforeEach(function () {
-      marray = new tf.MArray(arr, 'uint8', [3, 4]);
+      marray = new MArray(Array2D, 'uint8', [3, 4]);
+      should();
     });
     
     it('Iterate 2D MArray', function () {
@@ -37,11 +38,11 @@ describe('Unit uint8 Tensor', function () {
   });
 
   describe('3D Marray', function () {
-    var arr = matrixes.Array3D;
-    var marray;
+    let marray;
 
     beforeEach(function () {
-      marray = new tf.MArray(arr, 'uint8', [2, 2, 3]);
+      marray = new MArray(Array3D, 'uint8', [2, 2, 3]);
+      should();
     });
 
     it('Iterate 3D MArray', function () {

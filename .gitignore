@@ -4,3 +4,5 @@ tags
 index.js
 build
 node_modules
+
+.tmp
