@@ -36,15 +36,23 @@ class TensorShape {
     return this._data.length;
   }
 
-  get dims() : TensorDimension[] {
+  get dims(): TensorDimension[] {
     return this._data;
   }
 
   get ndims() {
     return this.length;
   }
+
+  toString = (): string => {
+    let dims = `[${this.dims.join(', ')}]`;
+    return `TensorShape# ${dims} =${this.length}`
+  }
 }
 
+/**
+ * Tensor dimension class
+ */
 class TensorDimension {
   private _power = 0;
 
@@ -52,8 +60,15 @@ class TensorDimension {
     this._power = _.toNumber(power) || 0;
   }
 
+  /**
+   * Returns cardinality(power) of dimension
+   */
   get power() {
     return this._power;
+  }
+
+  toString = (): string => {
+    return `Dimension(${this.power})`;
   }
 }
 
