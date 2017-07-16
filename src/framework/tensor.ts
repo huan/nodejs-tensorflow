@@ -1,6 +1,6 @@
 import * as _ from 'lodash'
 
-import * as tf_ from './build/Release/tensorflow.node'
+import * as tf_ from 'tensorflow.node'
 import DataType from './dtypes'
 import TensorShape from './tensorShape'
 

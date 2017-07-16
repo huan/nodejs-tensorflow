@@ -6,12 +6,17 @@
   "engines": {
     "node": ">=6.11.0"
   },
+  "babel": {
+    "presets": [
+      "latest"
+    ]
+  },
   "scripts": {
     "install": "npm run download_libs && npm run gyp",
     "download_libs": "grunt --gruntfile tools/Gruntfile download_libtensorflow",
     "gyp": "node-gyp configure build",
     "build": "webpack --config tools/webpack.config.js",
-    "test": "mocha test/**"
+    "test": "mocha-webpack --colors --webpack-config tools/webpack.config.test.js --full-trace \"test/**/*.js\""
   },
   "repository": {
     "type": "git",
@@ -49,8 +54,12 @@
   "devDependencies": {
     "@types/lodash": "^4.14.69",
     "awesome-typescript-loader": "^3.2.1",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-latest": "^6.24.1",
     "chai": "^4.0.2",
     "mocha": "^3.4.2",
+    "mocha-webpack": "^0.7.0",
     "nan": "^2.6.2",
     "pbf-loader": "^1.1.0",
     "protobufjs": "^6.8.0",
