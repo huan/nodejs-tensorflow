@@ -20,7 +20,7 @@
       'conditions': [
         ['OS=="linux"', {
           'libraries': [
-            '<(module_root_dir)/lib/libtensorflow.so'
+            '<(module_root_dir)/lib/libtensorflow_cc.so'
           ],
           'cflags_cc!': ['-fno-rtti']
         }]
