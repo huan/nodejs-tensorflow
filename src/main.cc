@@ -8,6 +8,7 @@
 
 #include "cc/framework/tensor.h"
 #include "cc/framework/tensor_shape.h"
+#include "cc/framework/ops.h"
 
 namespace nodejs_tf {
 
@@ -29,6 +30,7 @@ void init(Local<Object> exports) {
   NODE_SET_METHOD(exports, "version", Version);
   Tensor::Init(exports);
   TensorShape::Init(exports);
+  Operation::Init(exports);
 }
 
 NODE_MODULE(tensorflow, init)
