@@ -5,7 +5,8 @@
       'sources': [
         'src/main.cc',
         'src/cc/framework/tensor.cc',
-        'src/cc/framework/tensor_shape.cc'
+        'src/cc/framework/tensor_shape.cc',
+        'src/cc/framework/ops.cc'
       ],
 
       'include_dirs': [
