@@ -20,6 +20,13 @@ var tf = require('nodejs-tensorflow');
 console.log(tf.version())
 ```
 
+## Similar projects
+
+* [yorkie](https://github.com/yorkie/tensorflow-nodejs) - wip, MIT
+* [kmalakoff](https://github.com/kmalakoff/tensorflow-node) - closed, MIT
+* [nikhilk](https://github.com/nikhilk/node-tensorflow) - no info about the status
+* [node-tensorlfow](https://github.com/node-tensorflow/node-tensorflow) - SWIG implementation, closed
+
 ## Contributing
 
 Welcome to the project
