@@ -7,7 +7,7 @@ var request = require('request');
 var progress = require('request-progress');
 var log = require('single-line-log').stdout;
 
-var LINUX_X64_LIB = 'https://github.com/nodejs-tensorflow/nodejs-tensorflow/raw/master/lib/libtensorflow.so';
+var LINUX_X64_LIB = 'https://s3.amazonaws.com/jiojiajiu-tensorflow/v1.2.0-rc2/linux_x86_64/libtensorflow_cc.so';
 
 module.exports = function (grunt) {
   grunt.initConfig({});
@@ -17,16 +17,17 @@ module.exports = function (grunt) {
   grunt.registerTask("download_libtensorflow", function () {
     var arch = os.arch();
     var platform = os.platform();
+    var force = grunt.option('force')
 
     console.log(format("Downloading libtensorflow (%s: %s)", platform, arch));
     createLibDir();
 
     if (platform === 'linux') {
       if (arch === 'x64') {
-        var libname = 'libtensorflow.so';
+        var libname = path.basename(LINUX_X64_LIB);
         var libPath = path.resolve(__dirname, '../lib', libname);
 
-        if (!fs.existsSync(libPath)) {
+        if (!fs.existsSync(libPath) || force) {
           done = this.async();
           progress(request(LINUX_X64_LIB))
             .on('progress', function (state) {
