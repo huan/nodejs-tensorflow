@@ -1,9 +1,11 @@
 import * as tf_ from 'tensorflow.node';
 
+import DataType, * as dtypes from './framework/dtypes';
+import Graph from './core/graph';
 import Operation from './framework/ops';
+import Session from './core/session';
 import Tensor, {Constant, MArray} from './framework/tensor';
 import TensorShape from './framework/tensorShape';
-import DataType, * as dtypes from './framework/dtypes';
 
 const Tensorflow: Object = {
   version() {
@@ -11,7 +13,9 @@ const Tensorflow: Object = {
   },
 
   Constant: Constant,
+  Graph: Graph,
   Operation: Operation,
+  Session: Session,
   Tensor: Tensor,
   TensorShape: TensorShape,
   DataType: DataType,
