@@ -4,6 +4,8 @@
       'target_name': 'tensorflow',
       'sources': [
         'src/main.cc',
+        'src/cc/core/graph.cc',
+        'src/cc/core/session.cc',
         'src/cc/framework/tensor.cc',
         'src/cc/framework/tensor_shape.cc',
         'src/cc/framework/ops.cc'

@@ -6,6 +6,8 @@
 #include <tensorflow/c/c_api.h>
 #include <tensorflow/core/platform/logging.h>
 
+#include "cc/core/graph.h"
+#include "cc/core/session.h"
 #include "cc/framework/tensor.h"
 #include "cc/framework/tensor_shape.h"
 #include "cc/framework/ops.h"
@@ -28,9 +30,11 @@ void Version(const FunctionCallbackInfo<Value>& args) {
 
 void init(Local<Object> exports) {
   NODE_SET_METHOD(exports, "version", Version);
+  Graph::Init(exports);
+  Operation::Init(exports);
+  Session::Init(exports);
   Tensor::Init(exports);
   TensorShape::Init(exports);
-  Operation::Init(exports);
 }
 
 NODE_MODULE(tensorflow, init)

@@ -1,8 +1,18 @@
 declare module '*tensorflow.node' {
-  const version: any;
+  const Graph: any;
+  const Operation: any; 
+  const Session: any;
   const Tensor: any;
   const TensorShape: any;
-  export {version, Tensor, TensorShape}
+  const version: any;
+  export {
+    Graph,
+    Operation,
+    Session,
+    Tensor,
+    TensorShape,
+    version
+  }
 }
 
 declare module '*/types.proto' {
